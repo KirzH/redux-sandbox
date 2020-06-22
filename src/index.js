@@ -5,7 +5,10 @@ import { createStore } from 'redux';
 const reducer = (state = 0, action) =>  {
 
     switch (action.type) {
-        case 'INC':
+        case 'RND':
+            return state + action.payload;
+        
+            case 'INC':
             return state + 1;
 
             case 'DEC':
@@ -28,6 +31,16 @@ document
  .getElementById('dec')
  .addEventListener('click', () => {
     store.dispatch({type: 'DEC'});
+});
+
+document  
+ .getElementById('rnd')
+ .addEventListener('click', () => {
+    const payload =  Math.floor(Math.random()*10);
+    store.dispatch({
+        type: 'RND',
+        payload
+ });
 });
 
 const update = () => {
